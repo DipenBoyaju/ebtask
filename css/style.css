@@ -250,26 +250,29 @@ body {
   text-align: center;
 }
 
-.contact .contact-title h2 {
+.contact .contact-title h2,
+.taskmanager .taskmanager-title h2 {
   font-weight: 800;
   font-size: 70px;
   line-height: 64px;
   color: #4532FC;
 }
 
-.contact .contact-title p {
+.contact .contact-title p,
+.taskmanager .taskmanager-title p {
   font-weight: 400;
   font-size: 18px;
   line-height: 32px;
   padding-top: 12px;
 }
 
-.contact .contact-form {
+.contact .contact-form,
+.tasksection .tasklists {
   margin-top: 30px;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .contact form {
@@ -299,7 +302,8 @@ body {
   height: 120px;
 }
 
-.contact .contact-form button {
+.contact .contact-form button,
+.tasklists .tasks form button {
   background-color: #4532FC;
   border-radius: 25px;
   padding: 18px 60px;
@@ -308,8 +312,82 @@ body {
   outline: none;
   border: none;
   color: white;
+  cursor: pointer;
 }
 
+.taskmanager {
+  padding: 0 60px;
+  text-align: center;
+}
+
+.tasksection {
+  background-color: #F1F0FF;
+  padding: 70px 0;
+  border-radius: 10px;
+}
+
+.tasksection .tasks {
+  padding: 30px;
+  width: 60%;
+  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tasklists .tasks form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tasklists .tasks form textarea {
+  border: 1px solid #9E9E9E;
+  height: 60px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #9E9E9E;
+}
+
+.tasksection .tasklists {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.tasks form button {
+  align-self: flex-start;
+  margin-top: 10px;
+}
+
+.tasks .task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 3px;
+  align-items: center;
+}
+
+.tasks .task .task-item {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.tasks .task button {
+  background-color: rgb(253, 72, 72);
+  padding: 10px 20px;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
 
 
 /* Responsive Design */
@@ -387,7 +465,8 @@ body {
     width: 100%;
   }
 
-  .contact .contact-title h2 {
+  .contact .contact-title h2,
+  .tasksection .taskmanager-title h2 {
     font-weight: 800;
     font-size: 42px;
     line-height: 64px;
@@ -404,5 +483,10 @@ body {
     justify-content: center;
     align-items: center;
     box-shadow: 3px 3px 5px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .tasksection .tasks {
+    padding: 30px;
+    width: 90%;
   }
 }

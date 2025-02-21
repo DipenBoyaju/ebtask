@@ -1,9 +1,13 @@
+<?php 
+include './lib/connectdb.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EB Pearls</title>
+  <title>EB Pearls Assignment</title>
   <link rel="stylesheet" href="./css/style.css" />
   <script defer>
     function toggleMenu() {
@@ -47,19 +51,49 @@
       <p>Faster and flexible access to cash flow from one or all your invoices.</p>
     </div>
     <div class="source-items">
+    <?php
+  $select_outsource = $conn->prepare("SELECT * FROM `outsource`"); 
+  $select_outsource ->execute();
+  if($select_outsource->rowCount() > 0){
+    while($fetch_outsource = $select_outsource->fetch(PDO::FETCH_ASSOC)){
+  ?>
       <div class="source-item">
         <img src="./images/Earth.png" alt="">
-        <h4>Access up to $100,000</h4>
+        <h4><?= $fetch_outsource['title']; ?></h4>
         <p>We fund each invoice once approved and collect payment to optimise your cash flow.*
         </p>
       </div>
-      <div class="source-item">
-        <img src="./images/Earth.png" alt="">
-        <h4>Access up to $100,000</h4>
-        <p>We fund each invoice once approved and collect payment to optimise your cash flow.*
-        </p>
+      <?php
+    }
+ }else{
+    echo '<p class="empty">no outsource found</p>';
+ }
+ ?>
+    </div>
+  </section>
+
+  <section class="taskmanager">
+  <div class="tasksection">
+    <div class="taskmanager-title">
+      <h2>Task Manager</h2>
+      <p>Your daily to do list</p>
+    </div>
+    <div class="tasklists">
+      <div class="tasks">
+        <div class="task">
+          <div class="task-item">
+          <input type="checkbox">
+          <p>Task 1</p>
+          </div>
+          <button>Delete</button>
+        </div>
+        <form action="">
+          <textarea name="" id="" placeholder="Add new task"></textarea>
+          <button>Add Task</button>
+        </form>
       </div>
     </div>
+  </div>
   </section>
 
   <section class="contact">
@@ -69,7 +103,7 @@
     </div>
     <div class="contact-form">
       <form action="">
-        <input type="text" placeholder="Your name">
+        <input type="text" placeholder="Your name" require>
         <input type="email" placeholder="Email">
         <input type="tel" placeholder="Your best contact number">
         <textarea name="" id="">Business or company name</textarea>
